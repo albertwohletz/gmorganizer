@@ -1,20 +1,27 @@
 {% load static %}
 <!doctype html>
 <html>
-        <head>
-                <title>GM Organizer</title>
-                <!-- Author: Albert Wohletz -->
-        </head>
-                <meta name="viewport" content="width=device-width, initial-scale=1">
-                <script src={% static 'jquery-ui-1.11.2/external/jquery/jquery.js' %}></script>
-                <script src={% static 'jquery-ui-1.11.2/jquery-ui.min.js' %}></script>
-                <link rel="stylesheet" href="{% static 'bootstrap-3.2.0-dist/css/bootstrap.css' %}" >
-                <link rel="stylesheet" href="{% static 'css/main_style.css' %}" >
-                <script src={% static 'bootstrap-3.2.0-dist/js/bootstrap.min.js' %}></script>
-                <link href="{% static 'bootstrap-glyphicons-master/css/bootstrap.icon-large.min.css' %}" rel="stylesheet">
-                <script src={% static 'js/main.js' %}></script>
-        </head>
+    <head>
+        <!-- Author: Albert Wohletz -->
+        <title>GM Organizer</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src={% static 'jquery-ui-1.11.2/external/jquery/jquery.js' %}></script>
+        <script src={% static 'jquery-ui-1.11.2/jquery-ui.min.js' %}></script>
+        <link rel="stylesheet" href="{% static 'bootstrap-3.2.0-dist/css/bootstrap.css' %}" >
+        <link rel="stylesheet" href="{% static 'css/main_style.css' %}" >
+        <script src={% static 'bootstrap-3.2.0-dist/js/bootstrap.min.js' %}></script>
+        <link href="{% static 'bootstrap-glyphicons-master/css/bootstrap.icon-large.min.css' %}" rel="stylesheet">
+        <script src={% static 'js/main.js' %}></script>
+    </head>
 
-        <body>
-        </body>
+    <body>
+        <div class='container'>
+            <ul class="list-group">
+                <li class="list-group-item list-group-item-success">Dapibus ac facilisis in</li>
+                <li class="list-group-item list-group-item-info">Cras sit amet nibh libero</li>
+                <li class="list-group-item list-group-item-warning">Porta ac consectetur ac</li>
+                <li class="list-group-item list-group-item-danger">Vestibulum at eros</li>
+            </ul>    
+        </div>
+    </body>
 </html>
