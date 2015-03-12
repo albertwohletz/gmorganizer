@@ -13,14 +13,17 @@ Events
 | The Data <—	| Sub Event 1 <— 	| Contacted by A to do B, but it turns out C.  
 | Black Mail	| Sub Event 2	    |
 | The Artifact	| Sub Event 3		|
-				| View All
+(+)				| View All/Summary?
+				(+)
 PCs
-| Sam
-| Ethan
-| Wesley
+| Sam (-) <-- Delete buttons on right side of all elements.
+| Ethan (-)
+| Wesley (-)
+(+)
 NPCS
-| Bomb Voyage
-| Mr X.
+| Bomb Voyage (-)
+| Mr X. (-)
+(+)
 
 Features: 
 	Hover over names to view bio in popover.
@@ -33,13 +36,36 @@ Structure:
 	{{blah}} - Putting a string in {{}} will hide it from players, only show to GM
 
 Structure Code:
+	API
+		save(type, text, name, hidden, parent) - returns id
+		delete(id, type)
+		account stuff
+
+	HTML
+		Events:
+			id=sql id
+			class = something
+
+		SubEvents
+			class = sub+something
+
+		PC/NCS
+			
+	Javascript:
+		highlight over text to show summary
+		click tabs to expand out subtabs
+		drag to reorder
+		click to edit
+		click to create
+
+
 
 Structure DB:
 	event
 		id - int
 		user - User
 		name - string
-		description - string
+		text - string
 		hidden - Bool Default False
 
 	subevent
@@ -47,20 +73,20 @@ Structure DB:
 		event - int parent event id
 		user - User
 		name - string
-		description - string
+		text - string
 		hidden - Bool Default False
 
 	npc
 		id - int
 		user - User
 		name - string
-		description - string
+		text - string
 		hidden - Bool Default False
 	pc
 		id - int
 		user - User
 		name - string
-		description - string
+		text - string
 		hidden - Bool Default False
 
 	user
@@ -68,7 +94,6 @@ Structure DB:
 		name - string - Can change freely to another that isn't used
 		email - string
 		password - string hashed
-
 
 
 Requirements
