@@ -29,5 +29,49 @@ Features:
 	Uses Markdown
 
 Structure:
-	[[blah]] - Putting something in [[]] does a lookup for mouse over link.
-	
+	[[blah]] - Putting a string in [[]] does a lookup for mouse over link.
+	{{blah}} - Putting a string in {{}} will hide it from players, only show to GM
+
+Structure Code:
+
+Structure DB:
+	event
+		id - int
+		user - User
+		name - string
+		description - string
+		hidden - Bool Default False
+
+	subevent
+		id - int
+		event - int parent event id
+		user - User
+		name - string
+		description - string
+		hidden - Bool Default False
+
+	npc
+		id - int
+		user - User
+		name - string
+		description - string
+		hidden - Bool Default False
+	pc
+		id - int
+		user - User
+		name - string
+		description - string
+		hidden - Bool Default False
+
+	user
+		id - int 
+		name - string - Can change freely to another that isn't used
+		email - string
+		password - string hashed
+
+
+
+Requirements
+	Django
+	Python Markdown 2.6.1
+
