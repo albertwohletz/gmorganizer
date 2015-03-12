@@ -50,7 +50,10 @@ Structure Code:
 			class = sub+something
 
 		PC/NCS
-			
+
+		All
+			class ='warning' <-- for hidden, don't even print html for players.
+
 	Javascript:
 		highlight over text to show summary
 		click tabs to expand out subtabs
