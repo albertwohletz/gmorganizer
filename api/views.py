@@ -1,5 +1,5 @@
 from api import models
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseBadRequest
 from django.contrib.auth import authenticate
 from django.views.decorators.csrf import csrf_exempt
 import json
@@ -18,15 +18,21 @@ def create(request):
 	else:
 		hidden = True
 
+	obj = None
 	if type == 'event':
 		obj = models.event(name=name, text=text, hidden=hidden, user=current_user)
 	elif type == 'subevent':
 		event_id = request.POST['event']
 		event = models.event.objects.filter(id=event_id, user=current_user)
-		obj = models.subevent(name=name, text=text, hidden=hidden, user=current_user, event=event)
+		if event:
+			obj = models.subevent(name=name, text=text, hidden=hidden, user=current_user, event=event[0])
 
-	obj.save()
-	return HttpResponse({'id': obj.id})
+	if obj:
+		obj.save()
+		return HttpResponse({'id': obj.id, 'success': True})
+	else:
+		return HttpResponseBadRequest('Key not found')
+
 
 @csrf_exempt
 def delete(request):
