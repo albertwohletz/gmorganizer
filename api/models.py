@@ -5,14 +5,14 @@ from django.contrib.auth.models import User
 
 class event(models.Model):
     id = models.IntegerField(primary_key=True)
-    user = User()
+    user = models.ForeignKey(User)  
     name = models.CharField(max_length=100)
     text = models.CharField(max_length=5000)
     hidden = models.BooleanField(default=False)
 
 class subevent(models.Model):
     id = models.IntegerField(primary_key=True)
-    user = User()
+    user = models.ForeignKey(User)  
     event = event()
     name = models.CharField(max_length=100)
     text = models.CharField(max_length=5000)
@@ -20,14 +20,14 @@ class subevent(models.Model):
 
 class npc(models.Model):
     id = models.IntegerField(primary_key=True)
-    user = User()
+    user = models.ForeignKey(User)  
     name = models.CharField(max_length=100)
     text = models.CharField(max_length=5000)
     hidden = models.BooleanField(default=False)
 
 class pc(models.Model):
     id = models.IntegerField(primary_key=True)
-    user = User()
+    user = models.ForeignKey(User)  
     name = models.CharField(max_length=100)
     text = models.CharField(max_length=5000)
     hidden = models.BooleanField(default=False)
