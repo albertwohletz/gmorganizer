@@ -18,13 +18,16 @@
         <div class='container'>
             <div class='col-xs-3 list-group'>
                     {% for event in events %}
-                        <a class="list-group-item {% if event.hidden %}list-group-item-warning{% endif %} event" val='{{event.id}}'>{{event.name}}</a>
+                        <a href="#" class="list-group-item {% if event.hidden %}list-group-item-warning{% endif %} event" val='{{event.id}}'>   {{event.name}}
+                            <button type="button" class="btn btn-default btn-xs pull-right delete-event" val='{{event.id}}'><span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span></button>
+                        </a>
                     {% endfor %}
+                    <a href="#" class="list-group-item add-event" data-toggle="modal" data-target="#event-modal"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add New</a>
             </div>
             <div class='col-xs-3 subevents'>
                 <div class="list-group">
                     {% for subevent in subevents %}
-                        <a class="list-group-item {% if subevent.hidden %}list-group-item-warning{% endif %} hidden subevent-{{subevent.event.id}}">{{subevent.name}}</a>
+                        <a class="list-group-item {% if subevent.hidden %}list-group-item-warning{% endif %} hidden subevent subevent-{{subevent.event.id}}">{{subevent.name}}</a>
                     {% endfor %}
                 </div> 
             </div>
@@ -32,4 +35,16 @@
             </div>
         </div>
     </body>
+    <div class="modal fade" id='event-modal'>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <input type="text" class="form-control event-name" placeholder="Name" aria-describedby="sizing-addon1">
+                <textarea class="form-control event-text" placeholder="Text" aria-describedby="sizing-addon1"></textarea>
+                <input type="checkbox" class='event-hidden' checked> Hidden
+                <button type="button" class="btn btn-default save-event"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></button>
+                </div>
+            </div>
+        </div>
+    </div>
 </html>

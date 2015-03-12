@@ -36,8 +36,10 @@ def create(request):
 
 @csrf_exempt
 def delete(request):
+	print request.GET
 	current_user = request.user
 	id = request.GET['id']
+	print id
 
 	# Delete this guy, but make sure user=user so you can't game the api call to sabotage others.
 	models.event.objects.filter(id=id, user=current_user).delete()
