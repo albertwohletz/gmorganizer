@@ -31,7 +31,7 @@ def create(request):
 		obj.save()
 		return HttpResponse({'id': obj.id, 'success': True})
 	else:
-		return HttpResponseBadRequest('Key not found')
+		return HttpResponseBadRequest('No object saved')
 
 
 @csrf_exempt
