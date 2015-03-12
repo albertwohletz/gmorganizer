@@ -16,12 +16,20 @@
 
     <body>
         <div class='container'>
-            <ul class="list-group">
-                <li class="list-group-item list-group-item-success">Dapibus ac facilisis in</li>
-                <li class="list-group-item list-group-item-info">Cras sit amet nibh libero</li>
-                <li class="list-group-item list-group-item-warning">Porta ac consectetur ac</li>
-                <li class="list-group-item list-group-item-danger">Vestibulum at eros</li>
-            </ul>    
+            <div class='col-xs-3 list-group'>
+                    {% for event in events %}
+                        <a class="list-group-item {% if event.hidden %}list-group-item-warning{% endif %} event" val='{{event.id}}'>{{event.name}}</a>
+                    {% endfor %}
+            </div>
+            <div class='col-xs-3 subevents'>
+                <div class="list-group">
+                    {% for subevent in subevents %}
+                        <a class="list-group-item {% if subevent.hidden %}list-group-item-warning{% endif %} hidden subevent-{{subevent.event.id}}">{{subevent.name}}</a>
+                    {% endfor %}
+                </div> 
+            </div>
+            <div class='col-xs-6 summary'>
+            </div>
         </div>
     </body>
 </html>
