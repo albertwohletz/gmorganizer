@@ -1,3 +1,6 @@
 from django.shortcuts import render
+from api import models
 
-# Create your views here.
+def home(request):
+	params = {}
+    return render(request, 'main.html', params)
