@@ -6,6 +6,12 @@ $(function() {
 		$('.subevent-'+id).removeClass('hidden');
 		$('.event').removeClass('active');
 		$(this).addClass('active');
+		$('.subevent').removeClass('active');
+	});
+
+	$('.subevent').click(function(){
+		$('.subevent').removeClass('active');
+		$(this).addClass('active');
 	});
 
 	$('.save-event').click(function(){

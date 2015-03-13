@@ -103,5 +103,9 @@ Requirements
 	Django
 	Python Markdown 2.6.1
 
+Features to add
+Toggle Hidden
+Edit
+
 Known Bugs
 Visible subevents will be printed but have html hidden class if parent class is hidden.  
