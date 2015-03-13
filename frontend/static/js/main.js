@@ -22,19 +22,20 @@ $(function() {
 			},
 		});
 	});
+});
 
-	$('.delete-event').click(function(){
-		var id = $(this).attr('val');
-		var type = $(this).attr('type');
-		$.ajax({
-  			url: "/api/delete/",
-  			type: "GET",
-  			data: {'id': id, 'type': type},
-  			dataType: 'json'
-		});
 
-		$(this).parent().remove();
+$(document).on("click",".delete-event", function(){
+	var id = $(this).attr('val');
+	var type = $(this).attr('type');
+	$.ajax({
+			url: "/api/delete/",
+			type: "GET",
+			data: {'id': id, 'type': type},
+			dataType: 'json'
 	});
+
+	$(this).parent().remove();
 });
 
 function get_new_event_html(name, text, hidden, id){
@@ -43,7 +44,7 @@ function get_new_event_html(name, text, hidden, id){
 		hidden_str = 'list-group-item-warning';
 	}
 
-	var s = '<a href="#" class="list-group-item event' + hidden_str + ' val="{{event.id}}">';  
+	var s = '<a href="#" class="list-group-item event ' + hidden_str + ' val="{{event.id}}">';  
 	s += name;
     s += '<button type="button" class="btn btn-default btn-xs pull-right delete-event" val="'+id+'">';
     s += '<span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>';
