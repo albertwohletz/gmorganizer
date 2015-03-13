@@ -7,11 +7,13 @@ $(function() {
 		$('.event').removeClass('active');
 		$(this).addClass('active');
 		$('.subevent').removeClass('active');
+		$('.summary').html($(this).attr('text'));
 	});
 
 	$('.subevent').click(function(){
 		$('.subevent').removeClass('active');
 		$(this).addClass('active');
+		$('.summary').html($(this).attr('text'));
 	});
 
 	$('.save-event').click(function(){

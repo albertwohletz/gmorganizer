@@ -21,8 +21,8 @@
             <div class='col-xs-3 list-group'>
                 <div class='event-div'>
                     {% for event in events %}
-                        <a href="#" class="list-group-item {% if event.hidden %}list-group-item-warning{% endif %} event" val="{{event.id}}">   {{event.name}}
-
+                        <a href="#" class="list-group-item {% if event.hidden %}list-group-item-warning{% endif %} event" val="{{event.id}}"text="{{event.text}}">   
+                        {{event.name}}
                             {% if gm %}
                                 <button type="button" class="btn btn-default btn-xs pull-right delete-event" val='{{event.id}}'><span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span></button>
                             {% endif %}
@@ -39,7 +39,7 @@
                 <div class="list-group">
                     <div class='subevent-div'>
                         {% for subevent in subevents %}
-                            <a href="#" class="list-group-item hidden {% if subevent.hidden %}list-group-item-warning{% endif %} subevent subevent-{{subevent.event.id}}" val="{{subevent.id}}">   
+                            <a href="#" class="list-group-item hidden {% if subevent.hidden %}list-group-item-warning{% endif %} subevent subevent-{{subevent.event.id}}" val="{{subevent.id}}" text="{{subevent.text}}">   
                                 {{subevent.name}}
 
                                 {% if gm %}
@@ -54,6 +54,8 @@
                     {% endif %}
                 </div> 
             </div>
+
+            <!-- Summary Tab -->
             <div class='col-xs-6 summary'>
             </div>
         </div>

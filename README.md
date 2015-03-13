@@ -104,6 +104,7 @@ Requirements
 	Python Markdown 2.6.1
 
 Features to add
+Sort to order
 Toggle Hidden
 Edit
 
