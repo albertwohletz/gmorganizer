@@ -22,11 +22,16 @@
                 <div class='event-div'>
                     {% for event in events %}
                         <a href="#" class="list-group-item {% if event.hidden %}list-group-item-warning{% endif %} event" val="{{event.id}}">   {{event.name}}
-                            <button type="button" class="btn btn-default btn-xs pull-right delete-event" val='{{event.id}}'><span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span></button>
+
+                            {% if gm %}
+                                <button type="button" class="btn btn-default btn-xs pull-right delete-event" val='{{event.id}}'><span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span></button>
+                            {% endif %}
                         </a>
                     {% endfor %}
                 </div>
-                <a href="#" class="list-group-item add-event" data-toggle="modal" data-target="#event-modal"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add New</a>
+                {% if gm %}
+                    <a href="#" class="list-group-item add-event" data-toggle="modal" data-target="#event-modal"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add New</a>
+                {% endif %}
             </div>
 
             <!-- Subevents -->
@@ -36,11 +41,17 @@
                         {% for subevent in subevents %}
                             <a href="#" class="list-group-item hidden {% if subevent.hidden %}list-group-item-warning{% endif %} subevent subevent-{{subevent.event.id}}" val="{{subevent.id}}">   
                                 {{subevent.name}}
-                                <button type="button" class="btn btn-default btn-xs pull-right delete-event" val='{{subevent.id}}'><span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span></button>
+
+                                {% if gm %}
+                                    <button type="button" class="btn btn-default btn-xs pull-right delete-event" val='{{subevent.id}}'><span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span></button>
+                                {% endif %}
                             </a>
                         {% endfor %}
                     </div>
-                    <a href="#" class="list-group-item add-subevent" data-toggle="modal" data-target="#event-modal"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add New</a>
+
+                    {% if gm %}
+                        <a href="#" class="list-group-item add-subevent" data-toggle="modal" data-target="#event-modal"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add New</a>
+                    {% endif %}
                 </div> 
             </div>
             <div class='col-xs-6 summary'>
@@ -48,17 +59,19 @@
         </div>
     </body>
 
-    <!-- Event Modal -->
-    <div class="modal fade" id='event-modal'>
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                <input type="text" class="form-control event-name" placeholder="Name" aria-describedby="sizing-addon1">
-                <textarea class="form-control event-text" placeholder="Text" aria-describedby="sizing-addon1"></textarea>
-                <input type="checkbox" class='event-hidden' checked> Hidden
-                <button type="button" class="btn btn-default save-event"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></button>
+    {% if gm %}
+        <!-- Event Modal -->
+        <div class="modal fade" id='event-modal'>
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <input type="text" class="form-control event-name" placeholder="Name" aria-describedby="sizing-addon1">
+                    <textarea class="form-control event-text" placeholder="Text" aria-describedby="sizing-addon1"></textarea>
+                    <input type="checkbox" class='event-hidden' checked> Hidden
+                    <button type="button" class="btn btn-default save-event"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    {% endif %}
 </html>
