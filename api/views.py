@@ -29,7 +29,7 @@ def create(request):
 
 	if obj:
 		obj.save()
-		return HttpResponse({'id': obj.id, 'success': True})
+		return HttpResponse(json.dumps({'id': obj.id, 'success': True}))
 	else:
 		return HttpResponseBadRequest('No object saved')
 
