@@ -16,7 +16,7 @@ Events
 (+)				| View All/Summary?
 				(+)
 PCs
-| Sam (-) <-- Delete buttons on right side of all elements.
+| Sam (-) <-- Delete buttons on right side of all elements.  Change this to an edit button or add edit button.  Or a dropdown with delete and edit.
 | Ethan (-)
 | Wesley (-)
 (+)
@@ -103,3 +103,5 @@ Requirements
 	Django
 	Python Markdown 2.6.1
 
+Known Bugs
+Visible subevents will be printed but have html hidden class if parent class is hidden.  

@@ -11,11 +11,11 @@ $(function() {
 	$('.save-event').click(function(){
 		var name = $('.event-name').val();
 		var text = $('.event-text').val();
-		var hidden = $('.event-hidden').val();
+		var hidden = $('.event-hidden').prop('checked');
 		$.ajax({
   			url: "/api/create/",
   			type: "POST",
-  			data: {'name': name, 'text': text, 'hidden': false, 'type': last_type, 'event': $('.event.active').attr('val')},
+  			data: {'name': name, 'text': text, 'hidden': hidden, 'type': last_type, 'event': $('.event.active').attr('val')},
   			dataType: 'json',
   			success: function(data){
 				var h = get_new_event_html(name, text, hidden, data.id, $('.event.active').attr('val'));

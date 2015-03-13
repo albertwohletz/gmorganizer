@@ -10,7 +10,7 @@ def create(request):
 	name = request.POST['name']
 	text = request.POST['text']
 	hidden = request.POST['hidden']
-	type = request.POST['type']
+	model_type = request.POST['type']
 
 	# Mask hidden to bool
 	if hidden == 'false':
@@ -19,9 +19,9 @@ def create(request):
 		hidden = True
 
 	obj = None
-	if type == 'event':
+	if model_type == 'event':
 		obj = models.event(name=name, text=text, hidden=hidden, user=current_user)
-	elif type == 'subevent':
+	elif model_type == 'subevent':
 		event_id = request.POST['event']
 		event = models.event.objects.filter(id=event_id, user=current_user)
 		if event:
