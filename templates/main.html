@@ -30,12 +30,17 @@
             </div>
 
             <!-- Subevents -->
-            <div class='col-xs-3 subevents subevent-div'>
+            <div class='col-xs-3 subevents'>
                 <div class="list-group">
-                    {% for subevent in subevents %}
-                        <a class="list-group-item {% if subevent.hidden %}list-group-item-warning{% endif %} hidden subevent subevent-{{subevent.event.id}}">{{subevent.name}}</a>
-                    {% endfor %}
-                    <a href="#" class="list-group-item add-subevent" data-toggle="modal" data-target="#subevent-modal"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add New</a>
+                    <div class='subevent-div'>
+                        {% for subevent in subevents %}
+                            <a href="#" class="list-group-item hidden {% if subevent.hidden %}list-group-item-warning{% endif %} subevent subevent-{{subevent.event.id}}" val="{{subevent.id}}">   
+                                {{subevent.name}}
+                                <button type="button" class="btn btn-default btn-xs pull-right delete-event" val='{{subevent.id}}'><span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span></button>
+                            </a>
+                        {% endfor %}
+                    </div>
+                    <a href="#" class="list-group-item add-subevent" data-toggle="modal" data-target="#event-modal"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add New</a>
                 </div> 
             </div>
             <div class='col-xs-6 summary'>
@@ -43,6 +48,7 @@
         </div>
     </body>
 
+    <!-- Event Modal -->
     <div class="modal fade" id='event-modal'>
         <div class="modal-dialog">
             <div class="modal-content">
