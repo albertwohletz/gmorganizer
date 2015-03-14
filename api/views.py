@@ -10,7 +10,7 @@ def create(request):
 	name = request.POST['name']
 	text = request.POST['text']
 	hidden = request.POST['hidden']
-	model_type = request.POST['type']
+	model_type = request.POST['type'].lower()
 
 	# Mask hidden to bool
 	if hidden == 'false':
@@ -19,16 +19,16 @@ def create(request):
 		hidden = True
 
 	obj = None
-	if model_type == 'Event':
+	if model_type == 'event':
 		obj = models.event(name=name, text=text, hidden=hidden, user=current_user)
-	elif model_type == 'Subevent':
+	elif model_type == 'subevent':
 		event_id = request.POST['event']
 		event = models.event.objects.filter(id=event_id, user=current_user)
 		if event:
 			obj = models.subevent(name=name, text=text, hidden=hidden, user=current_user, event=event[0])
-	elif model_type == 'NPC':
+	elif model_type == 'npc':
 		obj = models.npc(name=name, text=text, hidden=hidden, user=current_user)
-	elif model_type == 'PC':
+	elif model_type == 'pc':
 		obj = models.pc(name=name, text=text, hidden=hidden, user=current_user)
 		
 	if obj:
@@ -40,13 +40,21 @@ def create(request):
 
 @csrf_exempt
 def delete(request):
-	print request.GET
 	current_user = request.user
 	id = request.GET['id']
-	print id
+	model_type = request.GET['type'].lower()
 
-	# Delete this guy, but make sure user=user so you can't game the api call to sabotage others.
-	models.event.objects.filter(id=id, user=current_user).delete()
+	print id
+	print model_type
+	if model_type == 'event':
+		models.event.objects.filter(id=id, user=current_user).delete()
+	elif model_type == 'subevent':
+		models.subevent.objects.filter(id=id, user=current_user).delete()
+	elif model_type == 'npc':
+		models.npc.objects.filter(id=id, user=current_user).delete()
+	elif model_type == 'pc':
+		models.pc.objects.filter(id=id, user=current_user).delete()
+
 	return HttpResponse("Success")
 
 @csrf_exempt

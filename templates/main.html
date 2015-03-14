@@ -50,7 +50,7 @@
                                         {{subevent.name}}
 
                                         {% if gm %}
-                                            <button type="button" class="btn btn-default btn-xs pull-right delete-event" val='{{subevent.id}}'><span    class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span></button>
+                                            <button type="button" class="btn btn-default btn-xs pull-right delete-subevent" val='{{subevent.id}}'><span    class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span></button>
                                         {% endif %}
                                     </a>
                                 {% endfor %}
@@ -72,7 +72,7 @@
                                     {{pc.name}}
 
                                     {% if gm %}
-                                        <button type="button" class="btn btn-default btn-xs pull-right delete-event" val='{{pc.id}}'><span  class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span></button>
+                                        <button type="button" class="btn btn-default btn-xs pull-right delete-pc" val='{{pc.id}}'><span  class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span></button>
                                     {% endif %}
                                 </a>
                             {% endfor %}
@@ -92,7 +92,7 @@
                                     {{npc.name}}
 
                                     {% if gm %}
-                                        <button type="button" class="btn btn-default btn-xs pull-right delete-event" val='{{npc.id}}'><span     class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span></button>
+                                        <button type="button" class="btn btn-default btn-xs pull-right delete-npc" val='{{npc.id}}'><span     class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span></button>
                                     {% endif %}
                                 </a>
                             {% endfor %}

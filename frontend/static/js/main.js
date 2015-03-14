@@ -49,16 +49,36 @@ $(function() {
 
 $(document).on("click",".delete-event", function(){
 	var id = $(this).attr('val');
-	var type = $(this).attr('type');
+	delete_item(id, 'event');
+	$(this).parent().remove();
+});
+
+$(document).on("click",".delete-subevent", function(){
+	var id = $(this).attr('val');
+	delete_item(id, 'subevent');
+	$(this).parent().remove();
+});
+
+$(document).on("click",".delete-npc", function(){
+	var id = $(this).attr('val');
+	delete_item(id, 'npc');
+	$(this).parent().remove();
+});
+
+$(document).on("click",".delete-pc", function(){
+	var id = $(this).attr('val');
+	delete_item(id, 'pc');
+	$(this).parent().remove();
+});
+
+function delete_item(id, type){
 	$.ajax({
 			url: "/api/delete/",
 			type: "GET",
 			data: {'id': id, 'type': type},
 			dataType: 'json'
 	});
-
-	$(this).parent().remove();
-});
+}
 
 // event_parent = '' for event, value for subevent
 function get_new_event_html(name, text, hidden, id, event_parent){
