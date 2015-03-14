@@ -15,86 +15,95 @@
     </head>
 
     <body>
-        <div class='container'>
+        <ul class="nav nav-tabs navbar-inverse" role="tablist">
+            <li role="presentation" class="active"><a href="#events" aria-controls="events" role="tab" data-toggle="tab">Events</a></li>
+            <li role="presentation"><a href="#pcs" aria-controls="pcs" role="tab" data-toggle="tab">PCs</a></li>
+            <li role="presentation"><a href="#npcs" aria-controls="npcs" role="tab" data-toggle="tab">NPCs</a></li>
+        </ul>
 
-            <!-- Events -->
-            <div class='col-xs-3 list-group'>
-                <div class='event-div'>
-                    {% for event in events %}
-                        <a href="#" class="list-group-item {% if event.hidden %}list-group-item-warning{% endif %} event" val="{{event.id}}"text="{{event.text}}">   
-                        {{event.name}}
-                            {% if gm %}
-                                <button type="button" class="btn btn-default btn-xs pull-right delete-event" val='{{event.id}}'><span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span></button>
-                            {% endif %}
-                        </a>
-                    {% endfor %}
-                    {% if gm %}
-                        <a href="#" class="list-group-item add-event" data-toggle="modal" data-target="#event-modal"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add New</a>
-                    {% endif %}
-                </div>
-                <div class="row">&nbsp;</div>
-                <!-- PC -->
-                <div class='pcs'>
-                    <div class="list-group">
-                        <div class='pc-div'>
-                            {% for pc in pcs %}
-                                <a href="#" class="list-group-item {% if pc.hidden %}list-group-item-warning{% endif %}" val="{{pc.id}}" text="{{pc.text}}">   
-                                    {{pc.name}}
-
+        <div class='container' style='padding-top:30px'>
+            <div class="tab-content col-xs-6">
+                <div role="tabpanel" class="tab-pane active" id="events">
+                    <!-- Events -->
+                    <div class='col-xs-6 list-group'>
+                        <div class='event-div'>
+                            {% for event in events %}
+                                <a href="#" class="list-group-item {% if event.hidden %}list-group-item-warning{% endif %} event" val="{{event.id}}"    text="{{event.text}}">   
+                                {{event.name}}
                                     {% if gm %}
-                                        <button type="button" class="btn btn-default btn-xs pull-right delete-event" val='{{pc.id}}'><span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span></button>
+                                        <button type="button" class="btn btn-default btn-xs pull-right delete-event" val='{{event.id}}'><span class="   glyphicon glyphicon-minus-sign" aria-hidden="true"></span></button>
                                     {% endif %}
                                 </a>
                             {% endfor %}
                             {% if gm %}
-                                <a href="#" class="list-group-item add-pc" data-toggle="modal" data-target="#event-modal"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add New</a>
+                                <a href="#" class="list-group-item add-event" data-toggle="modal" data-target="#event-modal"><span class="glyphicon     glyphicon-plus-sign" aria-hidden="true"></span> Add New</a>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <!-- Subevents -->
+                    <div class='col-xs-6 subevents'>
+                        <div class="list-group">
+                            <div class='subevent-div'>
+                                {% for subevent in subevents %}
+                                    <a href="#" class="list-group-item hidden {% if subevent.hidden %}list-group-item-warning{% endif %} subevent   subevent-{{subevent.event.id}}" val="{{subevent.id}}" text="{{subevent.text}}">   
+                                        {{subevent.name}}
+
+                                        {% if gm %}
+                                            <button type="button" class="btn btn-default btn-xs pull-right delete-event" val='{{subevent.id}}'><span    class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span></button>
+                                        {% endif %}
+                                    </a>
+                                {% endfor %}
+                            </div>
+
+                            {% if gm %}
+                                <a href="#" class="list-group-item add-subevent" data-toggle="modal" data-target="#event-modal"><span class="   glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add New</a>
+                            {% endif %}
+                        </div> 
+                    </div>
+                </div>            
+
+                <!-- PC -->
+                <div role="tabpanel" class='tab-pane col-xs-6' id='pcs'>
+                    <div class="list-group">
+                        <div class='pc-div'>
+                            {% for pc in pcs %}
+                                <a href="#" class="list-group-item {% if pc.hidden %}list-group-item-warning{% endif %}" val="{{pc.id}}" text   ="{{pc.text}}">   
+                                    {{pc.name}}
+
+                                    {% if gm %}
+                                        <button type="button" class="btn btn-default btn-xs pull-right delete-event" val='{{pc.id}}'><span  class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span></button>
+                                    {% endif %}
+                                </a>
+                            {% endfor %}
+                            {% if gm %}
+                                <a href="#" class="list-group-item add-pc" data-toggle="modal" data-target="#event-modal"><span class=" glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add New</a>
                             {% endif %}
                         </div>
                     </div> 
                 </div>
 
                 <!-- NPC -->
-                <div class='npcs'>
+                <div role="tabpanel" class='tab-pane col-xs-6' id='npcs'>
                     <div class="list-group">
                         <div class='npc-div'>
                             {% for npc in npcs %}
-                                <a href="#" class="list-group-item {% if npc.hidden %}list-group-item-warning{% endif %}" val="{{npc.id}}" text="{{npc.text}}">   
+                                <a href="#" class="list-group-item {% if npc.hidden %}list-group-item-warning{% endif %}" val="{{npc.id}}"  text="{{npc.text}}">   
                                     {{npc.name}}
 
                                     {% if gm %}
-                                        <button type="button" class="btn btn-default btn-xs pull-right delete-event" val='{{npc.id}}'><span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span></button>
+                                        <button type="button" class="btn btn-default btn-xs pull-right delete-event" val='{{npc.id}}'><span     class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span></button>
                                     {% endif %}
                                 </a>
                             {% endfor %}
                             {% if gm %}
-                                <a href="#" class="list-group-item add-npc" data-toggle="modal" data-target="#event-modal"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add New</a>
+                                <a href="#" class="list-group-item add-npc" data-toggle="modal" data-target="#event-modal"><span class="    glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add New</a>
                             {% endif %}
                         </div>
                     </div> 
                 </div>
             </div>
-
-            <!-- Subevents -->
-            <div class='col-xs-3 subevents'>
-                <div class="list-group">
-                    <div class='subevent-div'>
-                        {% for subevent in subevents %}
-                            <a href="#" class="list-group-item hidden {% if subevent.hidden %}list-group-item-warning{% endif %} subevent subevent-{{subevent.event.id}}" val="{{subevent.id}}" text="{{subevent.text}}">   
-                                {{subevent.name}}
-
-                                {% if gm %}
-                                    <button type="button" class="btn btn-default btn-xs pull-right delete-event" val='{{subevent.id}}'><span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span></button>
-                                {% endif %}
-                            </a>
-                        {% endfor %}
-                    </div>
-
-                    {% if gm %}
-                        <a href="#" class="list-group-item add-subevent" data-toggle="modal" data-target="#event-modal"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add New</a>
-                    {% endif %}
-                </div> 
-            </div>
-
+    
             <!-- Summary Tab -->
             <div class='col-xs-6 summary'>
             </div>
