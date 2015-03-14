@@ -28,10 +28,50 @@
                             {% endif %}
                         </a>
                     {% endfor %}
+                    {% if gm %}
+                        <a href="#" class="list-group-item add-event" data-toggle="modal" data-target="#event-modal"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add New</a>
+                    {% endif %}
                 </div>
-                {% if gm %}
-                    <a href="#" class="list-group-item add-event" data-toggle="modal" data-target="#event-modal"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add New</a>
-                {% endif %}
+                <div class="row">&nbsp;</div>
+                <!-- PC -->
+                <div class='pcs'>
+                    <div class="list-group">
+                        <div class='pc-div'>
+                            {% for pc in pcs %}
+                                <a href="#" class="list-group-item {% if pc.hidden %}list-group-item-warning{% endif %}" val="{{pc.id}}" text="{{pc.text}}">   
+                                    {{pc.name}}
+
+                                    {% if gm %}
+                                        <button type="button" class="btn btn-default btn-xs pull-right delete-event" val='{{pc.id}}'><span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span></button>
+                                    {% endif %}
+                                </a>
+                            {% endfor %}
+                            {% if gm %}
+                                <a href="#" class="list-group-item add-pc" data-toggle="modal" data-target="#event-modal"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add New</a>
+                            {% endif %}
+                        </div>
+                    </div> 
+                </div>
+
+                <!-- NPC -->
+                <div class='npcs'>
+                    <div class="list-group">
+                        <div class='npc-div'>
+                            {% for npc in npcs %}
+                                <a href="#" class="list-group-item {% if npc.hidden %}list-group-item-warning{% endif %}" val="{{npc.id}}" text="{{npc.text}}">   
+                                    {{npc.name}}
+
+                                    {% if gm %}
+                                        <button type="button" class="btn btn-default btn-xs pull-right delete-event" val='{{npc.id}}'><span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span></button>
+                                    {% endif %}
+                                </a>
+                            {% endfor %}
+                            {% if gm %}
+                                <a href="#" class="list-group-item add-npc" data-toggle="modal" data-target="#event-modal"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add New</a>
+                            {% endif %}
+                        </div>
+                    </div> 
+                </div>
             </div>
 
             <!-- Subevents -->
@@ -67,10 +107,18 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                    <input type="text" class="form-control event-name" placeholder="Name" aria-describedby="sizing-addon1">
-                    <textarea class="form-control event-text" placeholder="Text" aria-describedby="sizing-addon1"></textarea>
-                    <input type="checkbox" class='event-hidden' checked> Hidden
-                    <button type="button" class="btn btn-default save-event"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></button>
+                        <select class="form-control type">
+                            <option>Event</option>
+                            <option>Subevent</option>
+                            <option>PC</option>
+                            <option>NPC</option>
+                        </select>
+                        <input type="text" class="form-control event-name" placeholder="Name" aria-describedby="sizing-addon1">
+                        <textarea class="form-control event-text" placeholder="Text" aria-describedby="sizing-addon1"></textarea>
+                        <input type="checkbox" class='event-hidden' checked> Hidden
+                        <button type="button" class="btn btn-default save-event">
+                            <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
+                        </button>
                     </div>
                 </div>
             </div>

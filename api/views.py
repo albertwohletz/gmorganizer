@@ -19,14 +19,18 @@ def create(request):
 		hidden = True
 
 	obj = None
-	if model_type == 'event':
+	if model_type == 'Event':
 		obj = models.event(name=name, text=text, hidden=hidden, user=current_user)
-	elif model_type == 'subevent':
+	elif model_type == 'Subevent':
 		event_id = request.POST['event']
 		event = models.event.objects.filter(id=event_id, user=current_user)
 		if event:
 			obj = models.subevent(name=name, text=text, hidden=hidden, user=current_user, event=event[0])
-
+	elif model_type == 'NPC':
+		obj = models.npc(name=name, text=text, hidden=hidden, user=current_user)
+	elif model_type == 'PC':
+		obj = models.pc(name=name, text=text, hidden=hidden, user=current_user)
+		
 	if obj:
 		obj.save()
 		return HttpResponse(json.dumps({'id': obj.id, 'success': True}))

@@ -1,4 +1,3 @@
-var last_type = '';
 $(function() {
 	$('.event').click(function(){
 		var id = $(this).attr('val');
@@ -20,23 +19,29 @@ $(function() {
 		var name = $('.event-name').val();
 		var text = $('.event-text').val();
 		var hidden = $('.event-hidden').prop('checked');
+		var type = $('.type').val();
 		$.ajax({
   			url: "/api/create/",
   			type: "POST",
-  			data: {'name': name, 'text': text, 'hidden': hidden, 'type': last_type, 'event': $('.event.active').attr('val')},
+  			data: {'name': name, 'text': text, 'hidden': hidden, 'type': type, 'event': $('.event.active').attr('val')},
   			dataType: 'json',
   			success: function(data){
 				var h = get_new_event_html(name, text, hidden, data.id, $('.event.active').attr('val'));
-				$('.'+last_type+'-div').append(h);
+				$('.'+type+'-div').append(h);
 			},
 		});
 	});
-
 	$('.add-subevent').click(function(){
-		last_type = 'subevent';
+		$('.type').val('Subevent');
 	});
 	$('.add-event').click(function(){
-		last_type = 'event';
+		$('.type').val('Event');
+	});
+	$('.add-npc').click(function(){
+		$('.type').val('NPC');
+	});
+	$('.add-pc').click(function(){
+		$('.type').val('PC');
 	});
 });
 
