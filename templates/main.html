@@ -35,10 +35,10 @@
                                     {% endif %}
                                 </a>
                             {% endfor %}
-                            {% if gm %}
-                                <a href="#" class="list-group-item add-event" data-toggle="modal" data-target="#event-modal"><span class="glyphicon     glyphicon-plus-sign" aria-hidden="true"></span> Add New</a>
-                            {% endif %}
                         </div>
+                        {% if gm %}
+                            <a href="#" class="list-group-item add-event" data-toggle="modal" data-target="#event-modal"><span class="glyphicon     glyphicon-plus-sign" aria-hidden="true"></span> Add New</a>
+                        {% endif %}
                     </div>
 
                     <!-- Subevents -->
@@ -57,7 +57,7 @@
                             </div>
 
                             {% if gm %}
-                                <a href="#" class="list-group-item add-subevent" data-toggle="modal" data-target="#event-modal"><span class="   glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add New</a>
+                                <a href="#" class="list-group-item hidden add-subevent" data-toggle="modal" data-target="#event-modal"><span class="   glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add New</a>
                             {% endif %}
                         </div> 
                     </div>
@@ -76,10 +76,10 @@
                                     {% endif %}
                                 </a>
                             {% endfor %}
-                            {% if gm %}
-                                <a href="#" class="list-group-item add-pc" data-toggle="modal" data-target="#event-modal"><span class=" glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add New</a>
-                            {% endif %}
                         </div>
+                        {% if gm %}
+                            <a href="#" class="list-group-item add-pc" data-toggle="modal" data-target="#event-modal"><span class=" glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add New</a>
+                        {% endif %}
                     </div> 
                 </div>
 
@@ -96,10 +96,10 @@
                                     {% endif %}
                                 </a>
                             {% endfor %}
-                            {% if gm %}
-                                <a href="#" class="list-group-item add-npc" data-toggle="modal" data-target="#event-modal"><span class="    glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add New</a>
-                            {% endif %}
                         </div>
+                        {% if gm %}
+                            <a href="#" class="list-group-item add-npc" data-toggle="modal" data-target="#event-modal"><span class="    glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add New</a>
+                        {% endif %}
                     </div> 
                 </div>
             </div>

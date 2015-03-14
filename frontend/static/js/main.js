@@ -6,6 +6,7 @@ $(function() {
 		$('.event').removeClass('active');
 		$(this).addClass('active');
 		$('.subevent').removeClass('active');
+		$('.add-subevent').removeClass('hidden');
 		$('.summary').html($(this).attr('text'));
 	});
 
@@ -19,7 +20,7 @@ $(function() {
 		var name = $('.event-name').val();
 		var text = $('.event-text').val();
 		var hidden = $('.event-hidden').prop('checked');
-		var type = $('.type').val();
+		var type = $('.type').val().toLowerCase();
 		$.ajax({
   			url: "/api/create/",
   			type: "POST",
@@ -27,7 +28,8 @@ $(function() {
   			dataType: 'json',
   			success: function(data){
 				var h = get_new_event_html(name, text, hidden, data.id, $('.event.active').attr('val'));
-				$('.'+type+'-div').append(h);
+				var element = '.'+type+'-div';
+				$(element).append(h);
 			},
 		});
 	});
