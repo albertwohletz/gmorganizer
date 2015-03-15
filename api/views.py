@@ -20,7 +20,7 @@ def create(request):
 
 	obj = None
 	if model_type == 'event':
-		obj = models.event(name=name, text=text, hidden=hidden, user=current_user)
+		obj = models.event(name=name, text=text, hidden=hidden, user=current_user, order=1)
 	elif model_type == 'subevent':
 		event_id = request.POST['event']
 		event = models.event.objects.filter(id=event_id, user=current_user)
@@ -32,11 +32,16 @@ def create(request):
 		obj = models.pc(name=name, text=text, hidden=hidden, user=current_user)
 		
 	if obj:
-		obj.save()
 		return HttpResponse(json.dumps({'id': obj.id, 'success': True}))
 	else:
 		return HttpResponseBadRequest('No object saved')
 
+@csrf_exempt
+def reorder(request):
+	current_user = request.user
+	order = request.GET['order']
+	model_type = request.GET['type']
+	return HttpResponseBadRequest('No object saved')
 
 @csrf_exempt
 def delete(request):
@@ -44,8 +49,6 @@ def delete(request):
 	id = request.GET['id']
 	model_type = request.GET['type'].lower()
 
-	print id
-	print model_type
 	if model_type == 'event':
 		models.event.objects.filter(id=id, user=current_user).delete()
 	elif model_type == 'subevent':

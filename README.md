@@ -109,4 +109,5 @@ Toggle Hidden
 Edit
 
 Known Bugs
+deleting event doesn't delete subevents.
 Visible subevents will be printed but have html hidden class if parent class is hidden.  

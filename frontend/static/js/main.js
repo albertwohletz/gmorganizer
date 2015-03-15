@@ -1,4 +1,15 @@
 $(function() {
+	$('.sortable').sortable({
+		axis: "y",
+		update: function(e) {
+			var id = $(this).attr('id');
+
+			var ids = []
+			// Save order.
+			$(this).children().each(function(){ids.push($(this).attr('val'))});
+
+		}
+	});
 	$('.event').click(function(){
 		var id = $(this).attr('val');
 		$('.subevent').addClass('hidden');
@@ -32,6 +43,7 @@ $(function() {
 				$(element).append(h);
 			},
 		});
+		$("#event-modal").modal('hide');
 	});
 	$('.add-subevent').click(function(){
 		$('.type').val('Subevent');

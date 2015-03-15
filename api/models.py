@@ -8,6 +8,7 @@ class event(models.Model):
     name = models.CharField(max_length=100)
     text = models.CharField(max_length=5000)
     hidden = models.BooleanField(default=False)
+    order = models.IntegerField()
 
 class subevent(models.Model):
     user = models.ForeignKey(User)  

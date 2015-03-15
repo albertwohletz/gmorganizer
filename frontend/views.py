@@ -5,7 +5,7 @@ def home(request):
 	current_user = request.user
 	if current_user.is_authenticated():
 		params = {
-			'events': models.event.objects.filter(user=current_user),
+			'events': models.event.objects.filter(user=current_user).order_by('order'),
 			'subevents': models.subevent.objects.filter(user=current_user),
 			'pcs': models.pc.objects.filter(user=current_user),
 			'npcs': models.npc.objects.filter(user=current_user),
