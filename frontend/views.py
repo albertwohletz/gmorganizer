@@ -18,7 +18,7 @@ def home(request):
 def journal(request, username):
 	user = models.User.objects.get(username=username)
 	params = {
-			'events': models.event.objects.filter(user=user).filter(hidden=False).order_by('order'),
+			'events': models.event.objects.filter(user=user).filter(hidden=False),
 			'subevents': models.subevent.objects.filter(user=user, hidden=False),
 			'pcs': models.pc.objects.filter(user=user, hidden=False),
 			'npcs': models.npc.objects.filter(user=user, hidden=False),

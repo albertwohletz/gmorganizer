@@ -6,7 +6,13 @@ $(function() {
 
 			// Save order.
 			var ids = []
-			$(this).children().each(function(){ids.push($(this).attr('val'))});
+			var i = 0;
+			$(this).children().each(function(){
+				ids.push($(this).attr('val'));
+				$(this).attr('val', i);
+				i = i + 1;
+			});
+
 			$.ajax({
 	  			url: "/api/reorder/",
 	  			type: "POST",
@@ -44,7 +50,7 @@ $(function() {
   			dataType: 'json',
   			success: function(data){
 				var h = get_new_event_html(name, text, hidden, data.id, $('.event.active').attr('val'));
-				var element = '.'+type+'-div';
+				var element = '#'+type;
 				$(element).append(h);
 			},
 		});

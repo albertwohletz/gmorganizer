@@ -20,7 +20,7 @@ def create(request):
 
 	obj = None
 	if model_type == 'event':
-		obj = models.event(name=name, text=text, hidden=hidden, user=current_user, order=1)
+		obj = models.event(name=name, text=text, hidden=hidden, user=current_user)
 	elif model_type == 'subevent':
 		event_id = request.POST['event']
 		event = models.event.objects.filter(id=event_id, user=current_user)
@@ -57,8 +57,10 @@ def reorder(request):
 	else:
 		return HttpResponseBadRequest('No object saved')
 
+	print order
 	for idx, obj in enumerate(query):
-		obj.id = order[idx]
+		print obj.id, order.index(str(idx))
+		obj.id = order.index(str(idx))
 	for obj in query:
 		obj.save()
 
