@@ -2,12 +2,17 @@ $(function() {
 	$('.sortable').sortable({
 		axis: "y",
 		update: function(e) {
-			var id = $(this).attr('id');
+			var type = $(this).attr('id');
 
-			var ids = []
 			// Save order.
+			var ids = []
 			$(this).children().each(function(){ids.push($(this).attr('val'))});
-
+			$.ajax({
+	  			url: "/api/reorder/",
+	  			type: "POST",
+	  			data: {'type': type, 'order': ids},
+	  			dataType: 'json',
+			});
 		}
 	});
 	$('.event').click(function(){

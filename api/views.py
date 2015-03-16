@@ -32,6 +32,9 @@ def create(request):
 		obj = models.pc(name=name, text=text, hidden=hidden, user=current_user)
 		
 	if obj:
+		obj.save()
+		obj.order = obj.id
+		obj.save()
 		return HttpResponse(json.dumps({'id': obj.id, 'success': True}))
 	else:
 		return HttpResponseBadRequest('No object saved')
@@ -39,9 +42,27 @@ def create(request):
 @csrf_exempt
 def reorder(request):
 	current_user = request.user
-	order = request.GET['order']
-	model_type = request.GET['type']
-	return HttpResponseBadRequest('No object saved')
+	order = request.POST.getlist('order[]')
+	model_type = request.POST['type']
+
+	if model_type == 'event':
+		query = models.event.objects.filter(user=current_user)
+	elif model_type == 'subevent':
+		event_id = request.POST['event']
+		query = models.subevent.objects.filter(user=current_user, event_id=event_id)
+	elif model_type == 'pc':
+		query = models.pc.objects.filter(user=current_user)
+	elif model_type == 'npc':
+		query = models.npc.objects.filter(user=current_user)
+	else:
+		return HttpResponseBadRequest('No object saved')
+
+	for idx, obj in enumerate(query):
+		obj.id = order[idx]
+	for obj in query:
+		obj.save()
+
+	return HttpResponse("Good Job")
 
 @csrf_exempt
 def delete(request):

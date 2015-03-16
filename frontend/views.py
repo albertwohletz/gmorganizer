@@ -5,7 +5,7 @@ def home(request):
 	current_user = request.user
 	if current_user.is_authenticated():
 		params = {
-			'events': models.event.objects.filter(user=current_user).order_by('order'),
+			'events': models.event.objects.filter(user=current_user),
 			'subevents': models.subevent.objects.filter(user=current_user),
 			'pcs': models.pc.objects.filter(user=current_user),
 			'npcs': models.npc.objects.filter(user=current_user),
@@ -18,7 +18,7 @@ def home(request):
 def journal(request, username):
 	user = models.User.objects.get(username=username)
 	params = {
-			'events': models.event.objects.filter(user=user).filter(hidden=False),
+			'events': models.event.objects.filter(user=user).filter(hidden=False).order_by('order'),
 			'subevents': models.subevent.objects.filter(user=user, hidden=False),
 			'pcs': models.pc.objects.filter(user=user, hidden=False),
 			'npcs': models.npc.objects.filter(user=user, hidden=False),

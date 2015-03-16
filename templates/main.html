@@ -26,7 +26,7 @@
                 <div role="tabpanel" class="tab-pane active" id="events">
                     <!-- Events -->
                     <div class='col-xs-6 list-group'>
-                        <div id='event-div' class='sortable'>
+                        <div id='event' class='sortable'>
                             {% for event in events %}
                                 <a href="#" class="list-group-item {% if event.hidden %}list-group-item-warning{% endif %} event" val="{{event.id}}"    text="{{event.text}}">   
                                 {{event.name}}
@@ -44,7 +44,7 @@
                     <!-- Subevents -->
                     <div class='col-xs-6 subevents'>
                         <div class="list-group">
-                            <div id='subevent-div' class='sortable'>
+                            <div id='subevent' class='sortable'>
                                 {% for subevent in subevents %}
                                     <a href="#" class="list-group-item hidden {% if subevent.hidden %}list-group-item-warning{% endif %} subevent   subevent-{{subevent.event.id}}" val="{{subevent.id}}" text="{{subevent.text}}">   
                                         {{subevent.name}}
@@ -66,7 +66,7 @@
                 <!-- PC -->
                 <div role="tabpanel" class='tab-pane col-xs-6' id='pcs'>
                     <div class="list-group">
-                        <div id='pc-div' class='sortable'>
+                        <div id='pc' class='sortable'>
                             {% for pc in pcs %}
                                 <a href="#" class="list-group-item {% if pc.hidden %}list-group-item-warning{% endif %}" val="{{pc.id}}" text   ="{{pc.text}}">   
                                     {{pc.name}}
@@ -86,7 +86,7 @@
                 <!-- NPC -->
                 <div role="tabpanel" class='tab-pane col-xs-6' id='npcs'>
                     <div class="list-group">
-                        <div id='npc-div' class='sortable'>
+                        <div id='npc' class='sortable'>
                             {% for npc in npcs %}
                                 <a href="#" class="list-group-item {% if npc.hidden %}list-group-item-warning{% endif %}" val="{{npc.id}}"  text="{{npc.text}}">   
                                     {{npc.name}}
