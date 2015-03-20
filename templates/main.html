@@ -92,7 +92,7 @@
                     <div class="list-group">
                         <div id='npc' class='sortable'>
                             {% for npc in npcs %}
-                                <a href="#" class="list-group-item {% if npc.hidden %}list-group-item-warning{% endif %} npc" val="{{npc.id}}"  text="{{npc.text}}">   
+                                <a href="#" class="list-group-item {% if npc.hidden %}list-group-item-warning{% endif %} npc" val="{{npc.id}}"  text="{{npc.text}}" name='{{npc.name}}'>   
                                     {{npc.name}}
 
                                     {% if gm %}
@@ -113,7 +113,7 @@
                     <div class="list-group">
                         <div id='enemy' class='sortable'>
                             {% for npc in enemies %}
-                                <a href="#" class="list-group-item {% if npc.hidden %}list-group-item-warning{% endif %} enemy" val="{{npc.id}}"  text="{{npc.text}}">   
+                                <a href="#" class="list-group-item {% if npc.hidden %}list-group-item-warning{% endif %} enemy" val="{{npc.id}}"  text="{{npc.text}}" name='{{npc.name}}'>   
                                     {{npc.name}}
 
                                     {% if gm %}
