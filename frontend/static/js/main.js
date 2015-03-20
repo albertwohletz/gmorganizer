@@ -36,9 +36,16 @@ $(function() {
 		$('.summary').html($(this).attr('text'));
 	});
 
+	$('.pc').click(function(){
+		$('.pc').removeClass('active');
+		$(this).addClass('active');
+		$('.summary').html($(this).attr('text'));
+	});
+
 	$('.save-event').click(function(){
+		var re = /\n/gi;
 		var name = $('.event-name').val();
-		var text = $('.event-text').val();
+		var text = $('.event-text').val().replace(re, '</br>');
 		var hidden = $('.event-hidden').prop('checked');
 		var type = $('.type').val().toLowerCase();
 		$.ajax({
@@ -55,8 +62,9 @@ $(function() {
 		$("#event-modal").modal('hide');
 	});
 	$('.edit-btn').click(function(){
+		var re = /\n/gi;
+		var text = $('.event-text').val().replace(re, '</br>');
 		var name = $('.event-name').val();
-		var text = $('.event-text').val();
 		var type = $('.type').val().toLowerCase();
 		var hidden = $('.event-hidden').prop('checked');
 		
@@ -106,6 +114,36 @@ var edit_id = 0;
 $(document).on("click",".edit-event", function(){
 	edit_id = $(this).attr('val');
 	var type = 'Event';
+	var name = $(this).parent().attr('name');
+	var text = $(this).parent().attr('text');
+	var hidden = $(this).parent().hasClass('list-group-item-warning');
+
+	// Set Modal Params
+	set_modal(type, name, text, hidden);
+});
+$(document).on("click",".edit-subevent", function(){
+	edit_id = $(this).attr('val');
+	var type = 'Subevent';
+	var name = $(this).parent().attr('name');
+	var text = $(this).parent().attr('text');
+	var hidden = $(this).parent().hasClass('list-group-item-warning');
+
+	// Set Modal Params
+	set_modal(type, name, text, hidden);
+});
+$(document).on("click",".edit-pc", function(){
+	edit_id = $(this).attr('val');
+	var type = 'PC';
+	var name = $(this).parent().attr('name');
+	var text = $(this).parent().attr('text');
+	var hidden = $(this).parent().hasClass('list-group-item-warning');
+
+	// Set Modal Params
+	set_modal(type, name, text, hidden);
+});
+$(document).on("click",".edit-npc", function(){
+	edit_id = $(this).attr('val');
+	var type = 'NPC';
 	var name = $(this).parent().attr('name');
 	var text = $(this).parent().attr('text');
 	var hidden = $(this).parent().hasClass('list-group-item-warning');
@@ -166,6 +204,5 @@ function get_new_event_html(name, text, hidden, id, event_parent){
     s += '<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>';
     s += '</button>';
     s += '</a>';
-    alert(s);
     return s;
 }

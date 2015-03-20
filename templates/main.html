@@ -70,7 +70,7 @@
                     <div class="list-group">
                         <div id='pc' class='sortable'>
                             {% for pc in pcs %}
-                                <a href="#" class="list-group-item {% if pc.hidden %}list-group-item-warning{% endif %}" val="{{pc.id}}" text = "{{pc.text}}" name="{{pc.name}}">   
+                                <a href="#" class="list-group-item {% if pc.hidden %}list-group-item-warning{% endif %} pc" val="{{pc.id}}" text = "{{pc.text}}" name="{{pc.name}}">   
                                     {{pc.name}}
 
                                     {% if gm %}
@@ -91,7 +91,7 @@
                     <div class="list-group">
                         <div id='npc' class='sortable'>
                             {% for npc in npcs %}
-                                <a href="#" class="list-group-item {% if npc.hidden %}list-group-item-warning{% endif %}" val="{{npc.id}}"  text="{{npc.text}}">   
+                                <a href="#" class="list-group-item {% if npc.hidden %}list-group-item-warning{% endif %} npc" val="{{npc.id}}"  text="{{npc.text}}">   
                                     {{npc.name}}
 
                                     {% if gm %}

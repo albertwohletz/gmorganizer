@@ -121,11 +121,11 @@ def save(request):
 	if model_type == 'event':
 		obj = models.event.objects.filter(id=id, user=current_user).get()
 	elif model_type == 'subevent':
-		obj = models.subevent.objects.filter(id=id, user=current_user)
+		obj = models.subevent.objects.filter(id=id, user=current_user).get()
 	elif model_type == 'npc':
-		obj = models.npc.objects.filter(id=id, user=current_user)
+		obj = models.npc.objects.filter(id=id, user=current_user).get()
 	elif model_type == 'pc':
-		obj = models.pc.objects.filter(id=id, user=current_user)
+		obj = models.pc.objects.filter(id=id, user=current_user).get()
 
 	obj.name = name
 	obj.text = text
