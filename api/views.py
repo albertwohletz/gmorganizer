@@ -58,9 +58,9 @@ def reorder(request):
 		return HttpResponseBadRequest('No object saved')
 
 	print order
-	for idx, obj in enumerate(query):
-		print obj.id, order.index(str(idx))
-		obj.id = order.index(str(idx))
+	for obj in query:
+		print obj.id, order.index(str(obj.id));
+		obj.id = order.index(str(obj.id));
 	for obj in query:
 		obj.save()
 

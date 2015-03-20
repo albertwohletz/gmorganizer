@@ -32,6 +32,8 @@
                                 {{event.name}}
                                     {% if gm %}
                                         <button type="button" class="btn btn-default btn-xs pull-right delete-event" val='{{event.id}}'><span class="   glyphicon glyphicon-minus-sign" aria-hidden="true"></span></button>
+                                        <button type="button" class="btn btn-default btn-xs pull-right edit-event" val='{{pc.id}}'><span  class="glyphicon glyphicon glyphicon-cog" aria-hidden="true"></span></button>
+                                        <button type="button" class="btn btn-default btn-xs pull-right hide-event" val='{{pc.id}}'><span  class="glyphicon glyphicon glyphicon-eye-open" aria-hidden="true"></span></button>
                                     {% endif %}
                                 </a>
                             {% endfor %}
@@ -51,6 +53,8 @@
 
                                         {% if gm %}
                                             <button type="button" class="btn btn-default btn-xs pull-right delete-subevent" val='{{subevent.id}}'><span    class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span></button>
+                                        <button type="button" class="btn btn-default btn-xs pull-right edit-subevent" val='{{pc.id}}'><span  class="glyphicon glyphicon glyphicon-cog" aria-hidden="true"></span></button>
+                                        <button type="button" class="btn btn-default btn-xs pull-right hide-subevent" val='{{pc.id}}'><span  class="glyphicon glyphicon glyphicon-eye-open" aria-hidden="true"></span></button>
                                         {% endif %}
                                     </a>
                                 {% endfor %}
@@ -73,6 +77,8 @@
 
                                     {% if gm %}
                                         <button type="button" class="btn btn-default btn-xs pull-right delete-pc" val='{{pc.id}}'><span  class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span></button>
+                                        <button type="button" class="btn btn-default btn-xs pull-right edit-pc" val='{{pc.id}}'><span  class="glyphicon glyphicon glyphicon-cog" aria-hidden="true"></span></button>
+                                        <button type="button" class="btn btn-default btn-xs pull-right hide-pc" val='{{pc.id}}'><span  class="glyphicon glyphicon glyphicon-eye-open" aria-hidden="true"></span></button>
                                     {% endif %}
                                 </a>
                             {% endfor %}
@@ -93,6 +99,8 @@
 
                                     {% if gm %}
                                         <button type="button" class="btn btn-default btn-xs pull-right delete-npc" val='{{npc.id}}'><span     class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span></button>
+                                        <button type="button" class="btn btn-default btn-xs pull-right edit-npc" val='{{pc.id}}'><span  class="glyphicon glyphicon glyphicon-cog" aria-hidden="true"></span></button>
+                                        <button type="button" class="btn btn-default btn-xs pull-right hide-npc" val='{{pc.id}}'><span  class="glyphicon glyphicon glyphicon-eye-open" aria-hidden="true"></span></button>
                                     {% endif %}
                                 </a>
                             {% endfor %}

@@ -105,8 +105,8 @@ Requirements
 
 Features to add
 Sort to order
-Toggle Hidden
 Edit
+Toggle Hidden
 
 Known Bugs
 deleting event doesn't delete subevents.

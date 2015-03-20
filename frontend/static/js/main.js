@@ -9,8 +9,6 @@ $(function() {
 			var i = 0;
 			$(this).children().each(function(){
 				ids.push($(this).attr('val'));
-				$(this).attr('val', i);
-				i = i + 1;
 			});
 
 			$.ajax({
@@ -123,9 +121,16 @@ function get_new_event_html(name, text, hidden, id, event_parent){
 	}
 	s += ' val="'+id+'">';  
 	s += name;
-    s += '<button type="button" class="btn btn-default btn-xs pull-right delete-event" val="'+id+'" type="' + event_str + '"">';
+    s += '<button type="button" class="btn btn-default btn-xs pull-right delete-"'+event_str+'" val="'+id+'" type="' + event_str + '"">';
     s += '<span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>';
     s += '</button>';
+    s += '<button type="button" class="btn btn-default btn-xs pull-right delete-"'+event_str+'" val="'+id+'" type="' + event_str + '"">';
+    s += '<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>';
+    s += '</button>';
+    s += '<button type="button" class="btn btn-default btn-xs pull-right delete-"'+event_str+'" val="'+id+'" type="' + event_str + '"">';
+    s += '<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>';
+    s += '</button>';
     s += '</a>';
+    alert(s);
     return s;
 }
