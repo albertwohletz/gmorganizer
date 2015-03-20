@@ -84,6 +84,52 @@ def delete(request):
 	return HttpResponse("Success")
 
 @csrf_exempt
+def hide(request):
+	id = request.GET['id']
+	hide = request.GET['hide']
+	model_type = request.GET['type'].lower()
+	current_user = request.user
+
+	if model_type == 'event':
+		obj = models.event.objects.filter(id=id, user=current_user)
+	elif model_type == 'subevent':
+		obj = models.subevent.objects.filter(id=id, user=current_user)
+	elif model_type == 'npc':
+		obj = models.npc.objects.filter(id=id, user=current_user)
+	elif model_type == 'pc':
+		obj = models.pc.objects.filter(id=id, user=current_user)
+
+	obj.hidden = hide
+	obj.save()
+	return HttpResponse("Success")
+
+@csrf_exempt
 def save(request):
+	id = request.POST['id']
+	model_type = request.POST['type'].lower()
+	name = request.POST['name']
+	text = request.POST['text']
+	hidden = request.POST['hidden']
+	current_user = request.user
+
+	# Mask hidden to bool
+	if hidden == 'false':
+		hidden = False
+	else:
+		hidden = True
+		
+	if model_type == 'event':
+		obj = models.event.objects.filter(id=id, user=current_user).get()
+	elif model_type == 'subevent':
+		obj = models.subevent.objects.filter(id=id, user=current_user)
+	elif model_type == 'npc':
+		obj = models.npc.objects.filter(id=id, user=current_user)
+	elif model_type == 'pc':
+		obj = models.pc.objects.filter(id=id, user=current_user)
+
+	obj.name = name
+	obj.text = text
+	obj.hidden = hidden
+	obj.save()
 	return HttpResponse("Success")
 

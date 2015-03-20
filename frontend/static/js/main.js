@@ -54,6 +54,14 @@ $(function() {
 		});
 		$("#event-modal").modal('hide');
 	});
+	$('.edit-btn').click(function(){
+		var name = $('.event-name').val();
+		var text = $('.event-text').val();
+		var type = $('.type').val().toLowerCase();
+		var hidden = $('.event-hidden').prop('checked');
+		
+		edit_item(edit_id, type, name, text, hidden);
+	});
 	$('.add-subevent').click(function(){
 		$('.type').val('Subevent');
 	});
@@ -94,12 +102,42 @@ $(document).on("click",".delete-pc", function(){
 	$(this).parent().remove();
 });
 
+var edit_id = 0;
+$(document).on("click",".edit-event", function(){
+	edit_id = $(this).attr('val');
+	var type = 'Event';
+	var name = $(this).parent().attr('name');
+	var text = $(this).parent().attr('text');
+	var hidden = $(this).parent().hasClass('list-group-item-warning');
+
+	// Set Modal Params
+	set_modal(type, name, text, hidden);
+});
+
+
+function set_modal(type, name, text, hidden){
+	$("#event-modal").modal('show');
+	$('.type').val(type);
+	$('.event-name').val(name);
+	$('.event-text').val(text);
+	$('.event-hidden').prop('checked', hidden);
+}
+
 function delete_item(id, type){
 	$.ajax({
 			url: "/api/delete/",
 			type: "GET",
 			data: {'id': id, 'type': type},
 			dataType: 'json'
+	});
+}
+
+function edit_item(id, type, name, text, hidden){
+	$.ajax({
+		url: "/api/save/",
+		type: "POST",
+		data: {'id': id, 'type': type.toLowerCase(), 'name': name, 'text': text, 'hidden': hidden},
+		dataType: 'json'
 	});
 }
 
@@ -126,9 +164,6 @@ function get_new_event_html(name, text, hidden, id, event_parent){
     s += '</button>';
     s += '<button type="button" class="btn btn-default btn-xs pull-right delete-"'+event_str+'" val="'+id+'" type="' + event_str + '"">';
     s += '<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>';
-    s += '</button>';
-    s += '<button type="button" class="btn btn-default btn-xs pull-right delete-"'+event_str+'" val="'+id+'" type="' + event_str + '"">';
-    s += '<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>';
     s += '</button>';
     s += '</a>';
     alert(s);

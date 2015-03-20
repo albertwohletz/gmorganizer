@@ -7,5 +7,7 @@ urlpatterns = patterns('',
     url(r'^api/create/', 'api.views.create', name='create'),
     url(r'^api/reorder/', 'api.views.reorder', name='reorder'),
     url(r'^api/delete/', 'api.views.delete', name='delete'),
+    url(r'^api/save/', 'api.views.save', name='save'),
+    url(r'^api/hide/', 'api.views.hiden', name='hiden'),
     url(r'^admin/', include(admin.site.urls)),
 )
