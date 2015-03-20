@@ -22,6 +22,12 @@ class npc(models.Model):
     text = models.CharField(max_length=5000)
     hidden = models.BooleanField(default=False)
 
+class enemy(models.Model):
+    user = models.ForeignKey(User)  
+    name = models.CharField(max_length=100)
+    text = models.CharField(max_length=5000)
+    hidden = models.BooleanField(default=False)
+
 class pc(models.Model):
     user = models.ForeignKey(User)  
     name = models.CharField(max_length=100)

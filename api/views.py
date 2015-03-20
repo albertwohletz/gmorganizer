@@ -30,6 +30,9 @@ def create(request):
 		obj = models.npc(name=name, text=text, hidden=hidden, user=current_user)
 	elif model_type == 'pc':
 		obj = models.pc(name=name, text=text, hidden=hidden, user=current_user)
+	elif model_type == 'enemy':
+		obj = models.enemy(name=name, text=text, hidden=hidden, user=current_user)
+
 		
 	if obj:
 		obj.save()
@@ -54,6 +57,8 @@ def reorder(request):
 		query = models.pc.objects.filter(user=current_user)
 	elif model_type == 'npc':
 		query = models.npc.objects.filter(user=current_user)
+	elif model_type == 'enemy':
+		query = models.enemy.objects.filter(user=current_user)
 	else:
 		return HttpResponseBadRequest('No object saved')
 
@@ -80,6 +85,8 @@ def delete(request):
 		models.npc.objects.filter(id=id, user=current_user).delete()
 	elif model_type == 'pc':
 		models.pc.objects.filter(id=id, user=current_user).delete()
+	elif model_type == 'enemy':
+		models.enemy.objects.filter(id=id, user=current_user).delete()
 
 	return HttpResponse("Success")
 
@@ -98,6 +105,8 @@ def hide(request):
 		obj = models.npc.objects.filter(id=id, user=current_user)
 	elif model_type == 'pc':
 		obj = models.pc.objects.filter(id=id, user=current_user)
+	elif model_type == 'enemy':
+		obj = models.enemy.objects.filter(id=id, user=current_user)
 
 	obj.hidden = hide
 	obj.save()
@@ -117,7 +126,7 @@ def save(request):
 		hidden = False
 	else:
 		hidden = True
-		
+
 	if model_type == 'event':
 		obj = models.event.objects.filter(id=id, user=current_user).get()
 	elif model_type == 'subevent':
@@ -126,6 +135,8 @@ def save(request):
 		obj = models.npc.objects.filter(id=id, user=current_user).get()
 	elif model_type == 'pc':
 		obj = models.pc.objects.filter(id=id, user=current_user).get()
+	elif model_type == 'enemy':
+		obj = models.enemy.objects.filter(id=id, user=current_user).get()
 
 	obj.name = name
 	obj.text = text

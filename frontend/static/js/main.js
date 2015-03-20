@@ -42,6 +42,17 @@ $(function() {
 		$('.summary').html($(this).attr('text'));
 	});
 
+	$('.npc').click(function(){
+		$('.npc').removeClass('active');
+		$(this).addClass('active');
+		$('.summary').html($(this).attr('text'));
+	});
+	$('.enemy').click(function(){
+		$('.enemy').removeClass('active');
+		$(this).addClass('active');
+		$('.summary').html($(this).attr('text'));
+	});
+
 	$('.save-event').click(function(){
 		var re = /\n/gi;
 		var name = $('.event-name').val();
@@ -82,6 +93,9 @@ $(function() {
 	$('.add-pc').click(function(){
 		$('.type').val('PC');
 	});
+	$('.add-enemy').click(function(){
+		$('.type').val('Enemy');
+	});
 });
 
 
@@ -107,6 +121,11 @@ $(document).on("click",".delete-npc", function(){
 $(document).on("click",".delete-pc", function(){
 	var id = $(this).attr('val');
 	delete_item(id, 'pc');
+	$(this).parent().remove();
+});
+$(document).on("click",".delete-enemy", function(){
+	var id = $(this).attr('val');
+	delete_item(id, 'enemy');
 	$(this).parent().remove();
 });
 
@@ -144,6 +163,16 @@ $(document).on("click",".edit-pc", function(){
 $(document).on("click",".edit-npc", function(){
 	edit_id = $(this).attr('val');
 	var type = 'NPC';
+	var name = $(this).parent().attr('name');
+	var text = $(this).parent().attr('text');
+	var hidden = $(this).parent().hasClass('list-group-item-warning');
+
+	// Set Modal Params
+	set_modal(type, name, text, hidden);
+});
+$(document).on("click",".edit-enemy", function(){
+	edit_id = $(this).attr('val');
+	var type = 'Enemy';
 	var name = $(this).parent().attr('name');
 	var text = $(this).parent().attr('text');
 	var hidden = $(this).parent().hasClass('list-group-item-warning');

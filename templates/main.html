@@ -19,6 +19,7 @@
             <li role="presentation" class="active"><a href="#events" aria-controls="events" role="tab" data-toggle="tab">Events</a></li>
             <li role="presentation"><a href="#pcs" aria-controls="pcs" role="tab" data-toggle="tab">PCs</a></li>
             <li role="presentation"><a href="#npcs" aria-controls="npcs" role="tab" data-toggle="tab">NPCs</a></li>
+            <li role="presentation"><a href="#enemies" aria-controls="enemies" role="tab" data-toggle="tab">Enemies</a></li>
         </ul>
 
         <div class='container' style='padding-top:30px'>
@@ -106,7 +107,31 @@
                         {% endif %}
                     </div> 
                 </div>
+
+                <!-- Enemies -->
+                <div role="tabpanel" class='tab-pane col-xs-6' id='enemies'>
+                    <div class="list-group">
+                        <div id='enemy' class='sortable'>
+                            {% for npc in enemies %}
+                                <a href="#" class="list-group-item {% if npc.hidden %}list-group-item-warning{% endif %} enemy" val="{{npc.id}}"  text="{{npc.text}}">   
+                                    {{npc.name}}
+
+                                    {% if gm %}
+                                        <button type="button" class="btn btn-default btn-xs pull-right delete-enemy" val='{{npc.id}}'><span     class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span></button>
+                                        <button type="button" class="btn btn-default btn-xs pull-right edit-enemy" val='{{npc.id}}'><span  class="glyphicon glyphicon glyphicon-cog" aria-hidden="true"></span></button>
+                                    {% endif %}
+                                </a>
+                            {% endfor %}
+                        </div>
+                        {% if gm %}
+                            <a href="#" class="list-group-item add-enemy" data-toggle="modal" data-target="#event-modal"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true" name="{{npc.name}}"></span> Add New</a>
+                        {% endif %}
+                    </div> 
+                </div>
             </div>
+
+
+
     
             <!-- Summary Tab -->
             <div class='col-xs-6 summary'>
@@ -125,6 +150,7 @@
                             <option>Subevent</option>
                             <option>PC</option>
                             <option>NPC</option>
+                            <option>Enemy</option>
                         </select>
                         <input type="text" class="form-control event-name" placeholder="Name" aria-describedby="sizing-addon1">
                         <textarea class="form-control event-text" placeholder="Text" aria-describedby="sizing-addon1"></textarea>

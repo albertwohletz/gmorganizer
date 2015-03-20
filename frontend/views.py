@@ -9,6 +9,7 @@ def home(request):
 			'subevents': models.subevent.objects.filter(user=current_user),
 			'pcs': models.pc.objects.filter(user=current_user),
 			'npcs': models.npc.objects.filter(user=current_user),
+			'enemies': models.enemy.objects.filter(user=current_user),
 			'gm': True
 		}
 		return render(request, 'main.html', params)
@@ -22,6 +23,7 @@ def journal(request, username):
 			'subevents': models.subevent.objects.filter(user=user, hidden=False),
 			'pcs': models.pc.objects.filter(user=user, hidden=False),
 			'npcs': models.npc.objects.filter(user=user, hidden=False),
+			'enemies': models.enemy.objects.filter(user=user, hidden=False),
 			'gm': False
 		}
 	return render(request, 'main.html', params)
