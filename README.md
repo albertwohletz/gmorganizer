@@ -104,9 +104,7 @@ Requirements
 	Python Markdown 2.6.1
 
 Features to add
-Sort to order
-Edit
-Toggle Hidden
+Sort to order fix
 
 Known Bugs
 deleting event doesn't delete subevents.
