@@ -1,3 +1,5 @@
+I think we can delete the Subevent stuff, kinda useless, i'd rather just a big paragraph i think.
+
 Drag to order
 
 Events
