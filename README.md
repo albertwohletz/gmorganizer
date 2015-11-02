@@ -1,4 +1,7 @@
+Todo
 I think we can delete the Subevent stuff, kinda useless, i'd rather just a big paragraph i think.
+Add linking to images in npc section better
+Add ability to link to a specific bio.
 
 Drag to order
 
