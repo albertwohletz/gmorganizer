@@ -30,7 +30,7 @@
                     <div class='col-xs-6 list-group'>
                         <div id='event' class='sortable'>
                             {% for event in events %}
-                                <a href="#" class="list-group-item {% if event.hidden %}list-group-item-warning{% endif %} event" val="{{event.id}}"    text="{{event.text}}" name="{{event.name}}"
+                                <a href="#" class="list-group-item {% if event.hidden %}list-group-item-warning{% endif %} event" val="{{event.id}}"    text="{{event.text}}" name="{{event.name}}">   
                                 {{event.name}}
                                     {% if gm %}
                                         <button type="button" class="btn btn-default btn-xs pull-right delete-event" val='{{event.id}}'><span class="   glyphicon glyphicon-minus-sign" aria-hidden="true"></span></button>
@@ -49,7 +49,7 @@
                         <div class="list-group">
                             <div id='subevent' class='sortable'>
                                 {% for subevent in subevents %}
-                                    <a href="#" class="list-group-item hidden {% if subevent.hidden %}list-group-item-warning{% endif %} subevent   subevent-{{subevent.event.id}}" val="{{subevent.id}}" text="{{subevent.text}}" name="{{subevent.name}}"
+                                    <a href="#" class="list-group-item hidden {% if subevent.hidden %}list-group-item-warning{% endif %} subevent   subevent-{{subevent.event.id}}" val="{{subevent.id}}" text="{{subevent.text}}" name="{{subevent.name}}">   
                                         {{subevent.name}}
 
                                         {% if gm %}
@@ -63,16 +63,16 @@
                             {% if gm %}
                                 <a href="#" class="list-group-item hidden add-subevent" data-toggle="modal" data-target="#event-modal"><span class="   glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add New</a>
                             {% endif %}
-                        </div
+                        </div> 
                     </div>
-                </div>
+                </div>            
 
                 <!-- PC -->
                 <div role="tabpanel" class='tab-pane col-xs-6' id='pcs'>
                     <div class="list-group">
                         <div id='pc' class='sortable'>
                             {% for pc in pcs %}
-                                <a href="#" class="list-group-item {% if pc.hidden %}list-group-item-warning{% endif %} pc" val="{{pc.id}}" text = "{{pc.text}}" name="{{pc.name}}">
+                                <a href="#" class="list-group-item {% if pc.hidden %}list-group-item-warning{% endif %} pc" val="{{pc.id}}" text = "{{pc.text}}" name="{{pc.name}}">   
                                     {{pc.name}}
 
                                     {% if gm %}
@@ -85,7 +85,7 @@
                         {% if gm %}
                             <a href="#" class="list-group-item add-pc" data-toggle="modal" data-target="#event-modal"><span class=" glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add New</a>
                         {% endif %}
-                    </div>
+                    </div> 
                 </div>
 
                 <!-- NPC -->
@@ -93,7 +93,7 @@
                     <div class="list-group">
                         <div id='npc' class='sortable'>
                             {% for npc in npcs %}
-                                <a href="#" class="list-group-item {% if npc.hidden %}list-group-item-warning{% endif %} npc" val="{{npc.id}}"  text="{{npc.text}}" name='{{npc.name}}'>
+                                <a href="#" class="list-group-item {% if npc.hidden %}list-group-item-warning{% endif %} npc" val="{{npc.id}}"  text="{{npc.text}}" name='{{npc.name}}'>   
                                     {{npc.name}}
 
                                     {% if gm %}
@@ -106,7 +106,7 @@
                         {% if gm %}
                             <a href="#" class="list-group-item add-npc" data-toggle="modal" data-target="#event-modal"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true" name="{{npc.name}}"></span> Add New</a>
                         {% endif %}
-                    </div>
+                    </div> 
                 </div>
 
                 <!-- Enemies -->
@@ -114,7 +114,7 @@
                     <div class="list-group">
                         <div id='enemy' class='sortable'>
                             {% for npc in enemies %}
-                                <a href="#" class="list-group-item {% if npc.hidden %}list-group-item-warning{% endif %} enemy" val="{{npc.id}}"  text="{{npc.text}}" name='{{npc.name}}'>
+                                <a href="#" class="list-group-item {% if npc.hidden %}list-group-item-warning{% endif %} enemy" val="{{npc.id}}"  text="{{npc.text}}" name='{{npc.name}}'>   
                                     {{npc.name}}
 
                                     {% if gm %}
@@ -127,13 +127,13 @@
                         {% if gm %}
                             <a href="#" class="list-group-item add-enemy" data-toggle="modal" data-target="#event-modal"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true" name="{{npc.name}}"></span> Add New</a>
                         {% endif %}
-                    </div>
+                    </div> 
                 </div>
                 <div role="tabpanel" class='tab-pane' id='google'>
 		    <iframe src="https://docs.google.com/spreadsheets/d/1VUCGvs4tcOaVyuRa18qdN2IWnHqj4YXnIrW488QGfsI/pubhtml?widget=true&amp;headers=false" style="width:1500px; height:600px"></iframe>
 		</div>
             </div>
-
+    
             <!-- Summary Tab -->
             <div class='col-xs-6 summary'>
             </div>
